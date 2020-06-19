@@ -9,6 +9,10 @@
   "version": "0.0.1",
   "license": "Apache-2.0",
   "publisher": "inabsentia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inabsentia/vscode-exunit"
+  },
   "engines": {
     "vscode": "^1.46.0"
   },
