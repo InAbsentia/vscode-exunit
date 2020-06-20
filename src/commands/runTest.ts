@@ -8,6 +8,9 @@ export async function runTest() {
   const activeEditor = window.activeTextEditor;
 
   if (!activeEditor) {
+    window.showErrorMessage(
+      "No active Elixir test file found. Aborting test run."
+    );
     return;
   }
 

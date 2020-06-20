@@ -8,15 +8,18 @@ export async function runTestFile() {
   const activeEditor = window.activeTextEditor;
 
   if (!activeEditor) {
+    window.showErrorMessage(
+      "No active Elixir test file found. Aborting test run."
+    );
     return;
   }
 
-  const file = activeEditor.document.uri;
-  if (!file.fsPath.endsWith("_test.exs")) {
+  const fileName = activeEditor.document.uri.fsPath;
+  if (!fileName.endsWith("_test.exs")) {
     return;
   }
 
-  const appRoot = await findAppRoot(file.fsPath, findFiles);
+  const appRoot = await findAppRoot(fileName, findFiles);
   if (appRoot === "") {
     window.showErrorMessage("No app root directory found. Aborting test run.");
     return;
@@ -27,7 +30,7 @@ export async function runTestFile() {
     cwd: appRoot,
   });
   terminal.show(true);
-  terminal.sendText(`${baseCommand} ${relative(appRoot, file.fsPath)}`);
+  terminal.sendText(`${baseCommand} ${relative(appRoot, fileName)}`);
 }
 
 async function findFiles(glob: string): Promise<string[]> {
