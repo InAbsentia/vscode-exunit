@@ -1,26 +1,32 @@
-import * as vscode from "vscode";
+import { dirname, relative } from "path";
+
+const defaultRoot = "";
 
 export async function findAppRoot(
-  file: vscode.Uri,
-  finder: (glob: string) => Thenable<vscode.Uri[]>
-): Promise<string | null> {
+  filePath: string,
+  finder: (glob: string) => Promise<string[]>
+): Promise<string> {
   const mixFiles = await finder("**/mix.exs");
 
-  if (mixFiles && mixFiles.length > 0) {
-    const appDir = mixFiles.reduce((acc: string | null, uri: vscode.Uri):
-      | string
-      | null => {
-      const uriDir = uri.fsPath.split("/").slice(0, -1).join("/");
-
-      if (file.fsPath.includes(uriDir) && uriDir.length > (acc || "").length) {
-        return uriDir;
-      } else {
-        return acc;
-      }
-    }, null);
-
-    return appDir;
-  } else {
-    return null;
+  if (!mixFiles || mixFiles.length <= 0) {
+    return defaultRoot;
   }
+
+  return mixFiles.reduce((acc: string, uri: string): string => {
+    const dir = dirname(uri);
+
+    if (isInDirectory(dir, filePath) && isCloserToFile(dir, acc)) {
+      return dir;
+    } else {
+      return acc;
+    }
+  }, defaultRoot);
+}
+
+function isInDirectory(dir: string, file: string): Boolean {
+  return !relative(dir, file).startsWith("..");
+}
+
+function isCloserToFile(dir: string, otherDir: string): Boolean {
+  return dir.length > otherDir.length;
 }

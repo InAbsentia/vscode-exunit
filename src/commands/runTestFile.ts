@@ -16,9 +16,9 @@ export async function runTestFile() {
     return;
   }
 
-  const appRoot = await findAppRoot(file, workspace.findFiles);
-  if (!appRoot) {
-    window.showErrorMessage("No app root found.");
+  const appRoot = await findAppRoot(file.fsPath, findFiles);
+  if (appRoot === "") {
+    window.showErrorMessage("No app root found. Aborting test run.");
     return;
   }
 
@@ -28,4 +28,10 @@ export async function runTestFile() {
   });
   terminal.show();
   terminal.sendText(`${baseCommand} ${relative(appRoot, file.fsPath)}`);
+}
+
+async function findFiles(glob: string): Promise<string[]> {
+  return workspace
+    .findFiles(glob)
+    .then((files) => files.map((file) => file.fsPath));
 }
