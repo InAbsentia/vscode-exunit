@@ -18,7 +18,7 @@ export async function runTestFile() {
 
   const appRoot = await findAppRoot(file.fsPath, findFiles);
   if (appRoot === "") {
-    window.showErrorMessage("No app root found. Aborting test run.");
+    window.showErrorMessage("No app root directory found. Aborting test run.");
     return;
   }
 

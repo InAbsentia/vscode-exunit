@@ -6,6 +6,21 @@ import * as subject from "../../../commands/utils";
 suite("ExUnit Utils", () => {
   window.showInformationMessage("Start utils tests.");
 
+  test("When no mix.exs is found", async () => {
+    const testFilePath = path.resolve(
+      __dirname,
+      "non_umbrella/test/lib/my_test.exs"
+    );
+    const mixfiles: string[] = [];
+
+    const appRoot = await subject.findAppRoot(
+      testFilePath,
+      async () => mixfiles
+    );
+
+    assert.strictEqual(appRoot, "");
+  });
+
   test("Finding the app root in a non-umbrella app", async () => {
     const testFilePath = path.resolve(
       __dirname,
