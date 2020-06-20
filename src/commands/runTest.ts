@@ -27,7 +27,7 @@ export async function runTest() {
     name: "ExUnit Test Run",
     cwd: appRoot,
   });
-  terminal.show();
+  terminal.show(true);
   terminal.sendText(
     `${baseCommand} ${relative(appRoot, fileName)}:${lineNumber}`
   );

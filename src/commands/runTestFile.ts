@@ -26,7 +26,7 @@ export async function runTestFile() {
     name: "ExUnit Test Run",
     cwd: appRoot,
   });
-  terminal.show();
+  terminal.show(true);
   terminal.sendText(`${baseCommand} ${relative(appRoot, file.fsPath)}`);
 }
 
