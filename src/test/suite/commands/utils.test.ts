@@ -43,7 +43,7 @@ suite("ExUnit Utils", () => {
       "umbrella/apps/two/test/lib/my_test.exs"
     );
     const mixfiles = [
-      path.resolve(__dirname, "mix.exs"),
+      path.resolve(__dirname, "umbrella/mix.exs"),
       path.resolve(__dirname, "umbrella/apps/one/mix.exs"),
       path.resolve(__dirname, "umbrella/apps/two/mix.exs"),
     ];
@@ -55,5 +55,26 @@ suite("ExUnit Utils", () => {
     );
 
     assert.strictEqual(appRoot, expectedAppRoot);
+  });
+
+  test("Finding the umbrella root", async () => {
+    const testFilePath = path.resolve(
+      __dirname,
+      "umbrella/apps/one/test/lib/my_test.exs"
+    );
+    const mixfiles = [
+      path.resolve(__dirname, "other/apps/one/mix.exs"),
+      path.resolve(__dirname, "umbrella/apps/one/mix.exs"),
+      path.resolve(__dirname, "umbrella/mix.exs"),
+      path.resolve(__dirname, "umbrella/apps/two/mix.exs"),
+    ];
+    const expectedUmbrellaRoot = path.resolve(__dirname, "umbrella");
+
+    const umbrellaRoot = await subject.findUmbrellaRoot(
+      testFilePath,
+      async () => mixfiles
+    );
+
+    assert.strictEqual(umbrellaRoot, expectedUmbrellaRoot);
   });
 });

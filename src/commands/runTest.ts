@@ -1,4 +1,4 @@
-import { window, workspace } from "vscode";
+import { window } from "vscode";
 import { findAppRoot, runCommand } from "./utils";
 import { relative } from "path";
 
@@ -20,20 +20,13 @@ export async function runTest() {
     return;
   }
 
-  const appRoot = await findAppRoot(fileName, findFiles);
+  const appRoot = await findAppRoot(fileName);
   if (appRoot === "") {
     window.showErrorMessage("No app root directory found. Aborting test run.");
-    return;
+  } else {
+    runCommand(
+      appRoot,
+      `${baseCommand} ${relative(appRoot, fileName)}:${lineNumber}`
+    );
   }
-
-  runCommand(
-    appRoot,
-    `${baseCommand} ${relative(appRoot, fileName)}:${lineNumber}`
-  );
-}
-
-async function findFiles(glob: string): Promise<string[]> {
-  return workspace
-    .findFiles(glob)
-    .then((files) => files.map((file) => file.fsPath));
 }
