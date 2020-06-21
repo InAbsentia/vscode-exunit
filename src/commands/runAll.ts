@@ -1,5 +1,5 @@
 import { window, workspace } from "vscode";
-import { findAppRoot } from "./utils";
+import { findAppRoot, runCommand } from "./utils";
 
 const baseCommand = "mix test --trace";
 
@@ -19,12 +19,7 @@ export async function runAll() {
     return;
   }
 
-  const terminal = window.createTerminal({
-    name: "ExUnit Test Run",
-    cwd: appRoot,
-  });
-  terminal.show(true);
-  terminal.sendText(`${baseCommand}`);
+  runCommand(appRoot, baseCommand);
 }
 
 async function findFiles(glob: string): Promise<string[]> {

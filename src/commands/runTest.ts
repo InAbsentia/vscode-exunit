@@ -1,5 +1,5 @@
 import { window, workspace } from "vscode";
-import { findAppRoot } from "./utils";
+import { findAppRoot, runCommand } from "./utils";
 import { relative } from "path";
 
 const baseCommand = "mix test --trace";
@@ -26,12 +26,8 @@ export async function runTest() {
     return;
   }
 
-  const terminal = window.createTerminal({
-    name: "ExUnit Test Run",
-    cwd: appRoot,
-  });
-  terminal.show(true);
-  terminal.sendText(
+  runCommand(
+    appRoot,
     `${baseCommand} ${relative(appRoot, fileName)}:${lineNumber}`
   );
 }

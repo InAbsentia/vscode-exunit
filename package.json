@@ -4,7 +4,7 @@
   "description": "Run your ExUnit tests right in your editor.",
   "keywords": [
     "elixir",
-    "test"
+    "testing"
   ],
   "version": "0.0.1",
   "license": "Apache-2.0",
@@ -75,6 +75,16 @@
           "enablement": "editorLangId == elixir"
         }
       ]
+    },
+    "configuration": {
+      "title": "ExUnit",
+      "properties": {
+        "exunit.clearBetweenRuns": {
+          "type": "boolean",
+          "default": true,
+          "description": "Specifies whether to clear the terminal between test runs"
+        }
+      }
     }
   },
   "scripts": {
