@@ -2,19 +2,25 @@
 
 ## Features
 
-Run your Elixir project's ExUnit tests in VS Code's terminal:
+Run your Elixir project's ExUnit tests in VS Code's terminal.
 
-1. Run only the test under the cursor
-1. Run only the active test file
-1. Run all tests in your current app (child app when in an umbrella)
-1. Run all tests in your umbrella app
-1. Re-run the most recent command (persists across restarts)
+Access the available commands using `⌘-/Ctrl-⇧-p` (no default keybindings):
+
+1. ExUnit: Run test under cursor
+1. ExUnit: Run the current test file
+1. ExUnit: Run all tests in current app
+   - Child app when in an umbrella
+   - Full app when not in an umbrella
+1. ExUnit: Run all tests in umbrella app
+1. ExUnit: Re-run the previous test
+   - Run the same command in the same app directory
+   - Persists across restarts
 
 ## Requirements
 
 You must have an Elixir test or code file open and active in your editor workspace
-and the file must be inside an Elixir project (has a `mix.exs` file).
-It won't work with standalone `.exs` files.
+and the file must be inside an Elixir project with a `mix.exs` file.
+It won't work with standalone `.ex{s}` files.
 
 ## Extension Settings
 
