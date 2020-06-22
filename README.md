@@ -2,28 +2,31 @@
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Run your Elixir project's ExUnit tests in VS Code's terminal:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Run only the test under the cursor
+1. Run only the active test file
+1. Run all tests in your current app (child app when in an umbrella)
+1. Run all tests in your umbrella app
+1. Re-run the most recent command (persists across restarts)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+You must have an Elixir test or code file open and active in your editor workspace
+and the file must be inside an Elixir project (has a `mix.exs` file).
+It won't work with standalone `.exs` files.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-- `myExtension.enable`: enable/disable this extension
-- `myExtension.thing`: set to `blah` to do something
+- `exunit.clearBetweenRuns`: Specify whether the terminal should be cleared between test runs
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+When running all tests in an umbrella app,
+the extension simply runs `mix test` from the root of your application.
+It doesn't currently accomodate running tests for all child apps separately.
 
 ## Release Notes
 
