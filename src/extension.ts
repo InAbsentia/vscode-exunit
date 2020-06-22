@@ -1,4 +1,4 @@
-import * as vscode from "vscode";
+import { commands, ExtensionContext } from "vscode";
 
 import { runTest } from "./commands/runTest";
 import { runTestFile } from "./commands/runTestFile";
@@ -14,11 +14,16 @@ const allCommands = [
   runPrevious,
 ];
 
-export function activate(context: vscode.ExtensionContext) {
+const commandWithContext = (
+  command: Function,
+  context: ExtensionContext
+) => () => command(context);
+
+export function activate(context: ExtensionContext) {
   allCommands.forEach((command) => {
-    let disposable = vscode.commands.registerCommand(
+    let disposable = commands.registerCommand(
       `exunit.${command.name}`,
-      command
+      commandWithContext(command, context)
     );
 
     context.subscriptions.push(disposable);

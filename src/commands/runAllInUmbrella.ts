@@ -1,9 +1,9 @@
-import { window } from "vscode";
+import { ExtensionContext, window } from "vscode";
 import { findUmbrellaRoot, runCommand } from "./utils";
 
 const baseCommand = "mix test --trace";
 
-export async function runAllInUmbrella() {
+export async function runAllInUmbrella(context: ExtensionContext) {
   const activeEditor = window.activeTextEditor;
 
   if (!activeEditor) {
@@ -14,11 +14,13 @@ export async function runAllInUmbrella() {
   const fileName = activeEditor.document.uri.fsPath;
   const appRoot = await findUmbrellaRoot(fileName);
 
+  // TODO: If config is checked, cd to each child app and run tests
+
   if (appRoot === "") {
     window.showErrorMessage(
       "No umbrella root directory found. Aborting test run."
     );
   } else {
-    runCommand(appRoot, baseCommand);
+    runCommand(context, appRoot, baseCommand);
   }
 }

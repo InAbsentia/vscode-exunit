@@ -48,7 +48,7 @@
       },
       {
         "command": "exunit.runPrevious",
-        "title": "ExUnit: Run the previous test again"
+        "title": "ExUnit: Re-run the previous test"
       }
     ],
     "keybindings": [],
