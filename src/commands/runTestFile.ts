@@ -2,7 +2,7 @@ import { relative } from "path";
 import { ExtensionContext, window } from "vscode";
 import { findAppRoot, runCommand } from "./utils";
 
-const baseCommand = "mix test --trace";
+const baseCommand = "mix test";
 
 export async function runTestFile(context: ExtensionContext) {
   const activeEditor = window.activeTextEditor;

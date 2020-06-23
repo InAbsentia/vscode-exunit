@@ -36,7 +36,15 @@ It doesn't currently accomodate running tests for all child apps separately.
 
 ## Release Notes
 
-### 0.0.1
+### 0.1.3
+
+Don't pass the `--trace` flag to `mix test`.
+
+### 0.1.1 - 0.1.2
+
+Documentation updates.
+
+### 0.1.0
 
 Initial release
 

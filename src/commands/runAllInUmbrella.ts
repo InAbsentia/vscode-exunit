@@ -1,7 +1,7 @@
 import { ExtensionContext, window } from "vscode";
 import { findUmbrellaRoot, runCommand } from "./utils";
 
-const baseCommand = "mix test --trace";
+const baseCommand = "mix test";
 
 export async function runAllInUmbrella(context: ExtensionContext) {
   const activeEditor = window.activeTextEditor;
