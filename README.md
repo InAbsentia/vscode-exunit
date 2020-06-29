@@ -36,6 +36,11 @@ It doesn't currently accomodate running tests for all child apps separately.
 
 ## Release Notes
 
+### 0.1.4
+
+Build the test command from components.
+Pass `--color` flag, by default.
+
 ### 0.1.3
 
 Don't pass the `--trace` flag to `mix test`.
