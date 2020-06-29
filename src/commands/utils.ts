@@ -58,6 +58,8 @@ export function runCommand(
 
   const terminal = getTerminal(directory);
   if (getConfigValue("clearBetweenRuns")) terminal.sendText("clear");
+  
+  command = command + ' --color';
 
   terminal.sendText(command);
   terminal.show(true);
