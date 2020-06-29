@@ -2,7 +2,6 @@ import { ExtensionContext, window } from "vscode";
 import { findAppRoot, runCommand } from "./utils";
 import { relative } from "path";
 
-const baseCommand = "mix test";
 const notFoundMessage = "No active Elixir test file found. Aborting test run.";
 
 export async function runTest(context: ExtensionContext) {
@@ -24,10 +23,6 @@ export async function runTest(context: ExtensionContext) {
   if (appRoot === "") {
     window.showErrorMessage("No app root directory found. Aborting test run.");
   } else {
-    runCommand(
-      context,
-      appRoot,
-      `${baseCommand} ${relative(appRoot, fileName)}:${lineNumber}`
-    );
+    runCommand(context, appRoot, relative(appRoot, fileName), lineNumber);
   }
 }

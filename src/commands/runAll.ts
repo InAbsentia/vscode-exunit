@@ -1,8 +1,6 @@
 import { ExtensionContext, window } from "vscode";
 import { findAppRoot, runCommand } from "./utils";
 
-const baseCommand = "mix test";
-
 export async function runAll(context: ExtensionContext) {
   const activeEditor = window.activeTextEditor;
 
@@ -17,6 +15,6 @@ export async function runAll(context: ExtensionContext) {
   if (appRoot === "") {
     window.showErrorMessage("No app root directory found. Aborting test run.");
   } else {
-    runCommand(context, appRoot, baseCommand);
+    runCommand(context, appRoot);
   }
 }

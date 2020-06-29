@@ -1,8 +1,6 @@
 import { ExtensionContext, window } from "vscode";
 import { findUmbrellaRoot, runCommand } from "./utils";
 
-const baseCommand = "mix test";
-
 export async function runAllInUmbrella(context: ExtensionContext) {
   const activeEditor = window.activeTextEditor;
 
@@ -21,6 +19,6 @@ export async function runAllInUmbrella(context: ExtensionContext) {
       "No umbrella root directory found. Aborting test run."
     );
   } else {
-    runCommand(context, appRoot, baseCommand);
+    runCommand(context, appRoot);
   }
 }

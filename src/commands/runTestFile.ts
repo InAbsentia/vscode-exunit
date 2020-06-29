@@ -23,10 +23,6 @@ export async function runTestFile(context: ExtensionContext) {
   if (appRoot === "") {
     window.showErrorMessage("No app root directory found. Aborting test run.");
   } else {
-    runCommand(
-      context,
-      appRoot,
-      `${baseCommand} ${relative(appRoot, fileName)}`
-    );
+    runCommand(context, appRoot, relative(appRoot, fileName));
   }
 }

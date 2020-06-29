@@ -1,9 +1,11 @@
 import { dirname, relative } from "path";
 import { ExtensionContext, window, workspace, Terminal } from "vscode";
-export type Command = { cwd: string; cmd: string } | undefined;
+export type Command = { cwd: string; cmd: string };
 
 const defaultRoot = "";
 const terminalName = "ExUnit Test Run";
+const baseCommand = "mix test";
+const flags = "--color";
 
 const getTerminal = (cwd: string): Terminal => {
   let terminal = window.terminals.find((term) => term.name === terminalName);
@@ -37,10 +39,12 @@ const findFiles = async (glob: string): Promise<string[]> => {
 };
 
 export function runLastCommand(context: ExtensionContext): void {
-  const command: Command = context.workspaceState.get("exunit.lastCommand");
+  const command: Command | undefined = context.workspaceState.get(
+    "exunit.lastCommand"
+  );
 
   if (command) {
-    runCommand(context, command.cwd, command.cmd);
+    run(command.cwd, command.cmd);
   } else {
     window.showErrorMessage("No previous command found.");
   }
@@ -49,17 +53,23 @@ export function runLastCommand(context: ExtensionContext): void {
 export function runCommand(
   context: ExtensionContext,
   directory: string,
-  command: string
+  filePath: string = "",
+  lineNum?: number
 ): void {
+  const testPath = lineNum ? `${filePath}:${lineNum}` : filePath;
+  const command = [baseCommand, flags, testPath].join(" ");
+
   context.workspaceState.update("exunit.lastCommand", {
     cwd: directory,
     cmd: command,
   });
 
+  run(directory, command);
+}
+
+function run(directory: string, command: string): void {
   const terminal = getTerminal(directory);
   if (getConfigValue("clearBetweenRuns")) terminal.sendText("clear");
-  
-  command = command + ' --color';
 
   terminal.sendText(command);
   terminal.show(true);
