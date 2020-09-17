@@ -36,6 +36,10 @@ It doesn't currently accomodate running tests for all child apps separately.
 
 ## Release Notes
 
+### 0.1.5
+
+When clearing screen, clear scrollback, as well.
+
 ### 0.1.4
 
 Build the test command from components.
