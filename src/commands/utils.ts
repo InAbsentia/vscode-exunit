@@ -69,7 +69,7 @@ export function runCommand(
 
 function run(directory: string, command: string): void {
   const terminal = getTerminal(directory);
-  if (getConfigValue("clearBetweenRuns")) terminal.sendText("clear");
+  if (getConfigValue("clearBetweenRuns")) terminal.sendText("tput reset");
 
   terminal.sendText(command);
   terminal.show(true);
