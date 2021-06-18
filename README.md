@@ -27,6 +27,7 @@ It won't work with standalone `.ex{s}` files.
 This extension contributes the following settings:
 
 - `exunit.clearBetweenRuns`: Specify whether the terminal should be cleared between test runs
+- `exunit.saveAllBeforeRun`: Specify whether to save all files before running tests
 
 ## Known Issues
 
