@@ -71,6 +71,8 @@ function run(directory: string, command: string): void {
   const terminal = getTerminal(directory);
   if (getConfigValue("clearBetweenRuns")) terminal.sendText("tput reset");
 
+  if (getConfigValue("saveAllBeforeRun")) workspace.saveAll(false);
+
   terminal.sendText(command);
   terminal.show(true);
 }
