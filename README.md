@@ -37,6 +37,10 @@ It doesn't currently accomodate running tests for all child apps separately.
 
 ## Release Notes
 
+### 0.1.6
+
+Add setting to save open files before running any test command.
+
 ### 0.1.5
 
 When clearing screen, clear scrollback, as well.
