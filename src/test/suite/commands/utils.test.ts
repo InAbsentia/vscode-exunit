@@ -77,4 +77,26 @@ suite("ExUnit Utils", () => {
 
     assert.strictEqual(umbrellaRoot, expectedUmbrellaRoot);
   });
+
+  test("Building the exunit command", async () => {
+    const command = subject.buildCommand([], "test/foo_test.exs");
+    assert.strictEqual(command, "mix test --color test/foo_test.exs");
+  });
+
+  test("Building the exunit command with a line number", async () => {
+    const command = subject.buildCommand([], "test/foo_test.exs", 27);
+    assert.strictEqual(command, "mix test --color test/foo_test.exs:27");
+  });
+
+  test("Building the exunit command with a line number and extra flags", async () => {
+    const command = subject.buildCommand(
+      ["--stale", "--failed"],
+      "test/foo_test.exs",
+      27
+    );
+    assert.strictEqual(
+      command,
+      "mix test --color --stale --failed test/foo_test.exs:27"
+    );
+  });
 });

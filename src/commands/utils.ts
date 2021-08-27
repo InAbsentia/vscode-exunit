@@ -53,11 +53,11 @@ export function runLastCommand(context: ExtensionContext): void {
 export function runCommand(
   context: ExtensionContext,
   directory: string,
+  extraFlags: Array<string> = [],
   filePath: string = "",
   lineNum?: number
 ): void {
-  const testPath = lineNum ? `${filePath}:${lineNum}` : filePath;
-  const command = [baseCommand, flags, testPath].join(" ");
+  const command = buildCommand(extraFlags, filePath, lineNum);
 
   context.workspaceState.update("exunit.lastCommand", {
     cwd: directory,
@@ -65,6 +65,15 @@ export function runCommand(
   });
 
   run(directory, command);
+}
+
+export function buildCommand(
+  extraFlags: Array<string>,
+  filePath: string,
+  lineNum?: number
+): string {
+  const testPath = lineNum ? `${filePath}:${lineNum}` : filePath;
+  return [baseCommand, flags, ...extraFlags, testPath].join(" ");
 }
 
 function run(directory: string, command: string): void {

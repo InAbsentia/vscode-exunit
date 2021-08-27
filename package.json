@@ -43,6 +43,14 @@
         "title": "ExUnit: Run all tests in current app"
       },
       {
+        "command": "exunit.runAllFailed",
+        "title": "ExUnit: Run only tests that failed the last time they ran"
+      },
+      {
+        "command": "exunit.runAllStale",
+        "title": "ExUnit: Run only tests which reference modules that changed since the last time runAllStale ran"
+      },
+      {
         "command": "exunit.runAllInUmbrella",
         "title": "ExUnit: Run all tests in umbrella app"
       },
