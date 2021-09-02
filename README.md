@@ -12,7 +12,11 @@ Access the available commands using `⌘-/Ctrl-⇧-p` (no default keybindings):
    - Child app when in an umbrella
    - Full app when not in an umbrella
 1. ExUnit: Run all tests in umbrella app
-1. ExUnit: Re-run the previous test
+1. ExUnit: Run failed tests in current app
+   - Only tests that failed in the last run
+1. ExUnit: Run stale tests in current app
+   - Only tests that reference modules that have changed since the last run
+1. ExUnit: Re-run the previous test command
    - Run the same command in the same app directory
    - Persists across restarts
 

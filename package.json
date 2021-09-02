@@ -25,6 +25,8 @@
     "onCommand:exunit.runTestFile",
     "onCommand:exunit.runAll",
     "onCommand:exunit.runAllInUmbrella",
+    "onCommand:exunit.runAllFailed",
+    "onCommand:exunit.runAllStale",
     "onCommand:exunit.runPrevious"
   ],
   "main": "./out/extension.js",
@@ -43,20 +45,20 @@
         "title": "ExUnit: Run all tests in current app"
       },
       {
-        "command": "exunit.runAllFailed",
-        "title": "ExUnit: Run only tests that failed the last time they ran"
-      },
-      {
-        "command": "exunit.runAllStale",
-        "title": "ExUnit: Run only tests which reference modules that changed since the last time runAllStale ran"
-      },
-      {
         "command": "exunit.runAllInUmbrella",
         "title": "ExUnit: Run all tests in umbrella app"
       },
       {
+        "command": "exunit.runAllFailed",
+        "title": "ExUnit: Run failed tests in current app"
+      },
+      {
+        "command": "exunit.runAllStale",
+        "title": "ExUnit: Run stale tests in current app"
+      },
+      {
         "command": "exunit.runPrevious",
-        "title": "ExUnit: Re-run the previous test"
+        "title": "ExUnit: Re-run the previous test command"
       }
     ],
     "keybindings": [],
@@ -76,6 +78,14 @@
         },
         {
           "command": "exunit.runAllInUmbrella",
+          "enablement": "editorLangId == elixir"
+        },
+        {
+          "command": "exunit.runAllFailed",
+          "enablement": "editorLangId == elixir"
+        },
+        {
+          "command": "exunit.runAllStale",
           "enablement": "editorLangId == elixir"
         },
         {
