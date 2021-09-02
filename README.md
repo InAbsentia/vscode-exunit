@@ -41,6 +41,11 @@ It doesn't currently accomodate running tests for all child apps separately.
 
 ## Release Notes
 
+### 0.2.0
+
+Add command to run only failed tests.
+Add command to run only stale tests.
+
 ### 0.1.6
 
 Add setting to save open files before running any test command.
