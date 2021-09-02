@@ -2,7 +2,7 @@ import { commands, ExtensionContext } from "vscode";
 
 import { runTest } from "./commands/runTest";
 import { runTestFile } from "./commands/runTestFile";
-import { runAll } from "./commands/runAll";
+import { runAll, runAllStale, runAllFailed } from "./commands/runAll";
 import { runAllInUmbrella } from "./commands/runAllInUmbrella";
 import { runPrevious } from "./commands/runPrevious";
 
@@ -11,6 +11,8 @@ const allCommands = [
   runTestFile,
   runAll,
   runAllInUmbrella,
+  runAllFailed,
+  runAllStale,
   runPrevious,
 ];
 

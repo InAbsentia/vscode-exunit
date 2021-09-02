@@ -6,7 +6,7 @@
     "elixir",
     "testing"
   ],
-  "version": "0.1.6",
+  "version": "0.2.0",
   "license": "Apache-2.0",
   "publisher": "vscode-exunit",
   "repository": {
@@ -25,6 +25,8 @@
     "onCommand:exunit.runTestFile",
     "onCommand:exunit.runAll",
     "onCommand:exunit.runAllInUmbrella",
+    "onCommand:exunit.runAllFailed",
+    "onCommand:exunit.runAllStale",
     "onCommand:exunit.runPrevious"
   ],
   "main": "./out/extension.js",
@@ -47,8 +49,16 @@
         "title": "ExUnit: Run all tests in umbrella app"
       },
       {
+        "command": "exunit.runAllFailed",
+        "title": "ExUnit: Run failed tests in current app"
+      },
+      {
+        "command": "exunit.runAllStale",
+        "title": "ExUnit: Run stale tests in current app"
+      },
+      {
         "command": "exunit.runPrevious",
-        "title": "ExUnit: Re-run the previous test"
+        "title": "ExUnit: Re-run the previous test command"
       }
     ],
     "keybindings": [],
@@ -68,6 +78,14 @@
         },
         {
           "command": "exunit.runAllInUmbrella",
+          "enablement": "editorLangId == elixir"
+        },
+        {
+          "command": "exunit.runAllFailed",
+          "enablement": "editorLangId == elixir"
+        },
+        {
+          "command": "exunit.runAllStale",
           "enablement": "editorLangId == elixir"
         },
         {
