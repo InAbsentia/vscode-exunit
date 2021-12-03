@@ -4,6 +4,10 @@ All notable changes to the "exunit" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## 0.2.1
+
+Clear terminal using built-in command for cross-platform compatibility.
+
 ## 0.2.0
 
 Add command to run only failed tests.

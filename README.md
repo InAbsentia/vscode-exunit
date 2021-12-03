@@ -41,6 +41,10 @@ It doesn't currently accomodate running tests for all child apps separately.
 
 ## Release Notes
 
+### 0.2.1
+
+Clear terminal using built-in command for cross-platform compatibility.
+
 ### 0.2.0
 
 Add command to run only failed tests.

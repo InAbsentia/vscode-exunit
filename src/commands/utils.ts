@@ -1,5 +1,5 @@
 import { dirname, relative } from "path";
-import { ExtensionContext, window, workspace, Terminal } from "vscode";
+import { ExtensionContext, window, workspace, Terminal, commands } from "vscode";
 export type Command = { cwd: string; cmd: string };
 
 const defaultRoot = "";
@@ -36,6 +36,10 @@ const findFiles = async (glob: string): Promise<string[]> => {
   return workspace
     .findFiles(glob)
     .then((files) => files.map((file) => file.fsPath));
+};
+
+const clearTerminal = (): void => {
+  commands.executeCommand("workbench.action.terminal.clear");
 };
 
 export function runLastCommand(context: ExtensionContext): void {
@@ -78,7 +82,7 @@ export function buildCommand(
 
 function run(directory: string, command: string): void {
   const terminal = getTerminal(directory);
-  if (getConfigValue("clearBetweenRuns")) terminal.sendText("tput reset");
+  if (getConfigValue("clearBetweenRuns")) clearTerminal();
 
   if (getConfigValue("saveAllBeforeRun")) workspace.saveAll(false);
 
