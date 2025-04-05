@@ -111,11 +111,9 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
     "test": "vscode-test"
   },
   "devDependencies": {
