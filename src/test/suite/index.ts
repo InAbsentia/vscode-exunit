@@ -16,9 +16,6 @@ export function run(): Promise<void> {
       if (err) {
         return e(err);
       }
-      console.log("*******************************")
-      console.log(files)
-      console.log("*******************************")
 
       // Add files to the test suite
       files.forEach((f) => mocha.addFile(path.resolve(testsRoot, f)));
