@@ -112,18 +112,14 @@
   },
   "scripts": {
     "compile": "tsc -p ./",
-    "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "test": "vscode-test"
   },
   "devDependencies": {
     "@types/node": "^18.0",
     "@types/vscode": "^1.46.0",
-    "@typescript-eslint/eslint-plugin": "^8.29.0",
-    "@typescript-eslint/parser": "^8.29.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.24.0",
     "glob": "^11.0.1",
     "typescript": "^5.8.3"
   }
