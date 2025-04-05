@@ -29,8 +29,6 @@ jobs:
 
       - name: Compile
         run: npm run compile
-        # TODO: Remove after upgrading TS compiler and use --noCheck, instead
-        continue-on-error: true
 
       - name: Run tests
         run: xvfb-run -a npm test
