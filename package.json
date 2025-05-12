@@ -117,7 +117,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15",
-    "@types/vscode": "^1.99.1",
+    "@types/vscode": "^1.100.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.5.2",
     "glob": "^11.0.2",
