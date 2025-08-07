@@ -121,6 +121,6 @@
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
     "glob": "^11.0.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   }
 }
